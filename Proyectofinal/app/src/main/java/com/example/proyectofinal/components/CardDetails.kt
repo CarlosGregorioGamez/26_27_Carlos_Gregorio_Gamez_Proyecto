@@ -1,0 +1,63 @@
+package com.example.proyectofinal.components
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.proyectofinal.R
+
+class CardDetails(var imgId: Int, var imgDesc: String = "", var title: String)
+
+/**
+ * Componente por defecto para las tarjetas
+ *
+ * @param cardInfo recibe datos de CardDetails para definir el contenido de cada tarjeta
+ */
+@Composable
+fun CardComponent(cardInfo: CardSliderDetails) {
+    Card(
+        modifier = Modifier
+            .padding(6.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+        )
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = cardInfo.imgId),
+                contentDescription = cardInfo.imgDesc,
+            )
+            TitleComponent(
+                title = cardInfo.title,
+                textStyle = MaterialTheme.typography.titleSmall,
+                textColor = MaterialTheme.colorScheme.secondary
+            )
+        }
+    }
+}
+
+
+@Preview
+@Composable
+fun CardComponentPreview() {
+    CardComponent(
+        cardInfo = CardSliderDetails(
+            id = "P01",
+            imgId = R.drawable.ic_launcher_foreground,
+            imgDesc = "Descripcion",
+            title = "Titulo de ejemplo"
+        )
+    )
+}
