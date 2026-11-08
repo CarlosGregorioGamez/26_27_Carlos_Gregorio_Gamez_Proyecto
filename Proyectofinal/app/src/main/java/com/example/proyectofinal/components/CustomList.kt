@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.proyectofinal.data.Product
 
-
-class Product(var name: String, var family: String, var price: Float)
 
 /**
  * Componente que define una lista reutilizable (posible que tenga otra lista similar mas especifica)
@@ -21,8 +20,10 @@ fun CustomList(product: List<Product>) {
         product.forEach {
             Product(
                 name = "",
-                family = "",
-                price = 0f
+                quantity = 0,
+                price = 0.0,
+                imageUrl = "",
+                isFavorite = false
             )
         }
     }
@@ -33,9 +34,11 @@ fun CustomList(product: List<Product>) {
 fun ListaPreview() {
     val products = listOf(
         Product(
-            name = "cerveza",
-            family = "refrescos",
-            price = 1.23f
+            name = "Cerveza",
+            quantity = 2,
+            price = 1.7,
+            imageUrl = "",
+            isFavorite = false
         )
     )
     CustomList(products)
